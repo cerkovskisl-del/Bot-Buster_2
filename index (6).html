@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bot Buster — atklāj botus tiešraidē</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ===== TOP BAR ===== -->
+    <header class="topbar">
+      <div class="topbar__brand">
+        <span class="topbar__logo">◈</span>
+        <span class="topbar__title">BOT<span class="accent">BUSTER</span></span>
+      </div>
+
+      <div class="topbar__stats">
+        <div class="stat stat--score">
+          <span class="stat__label">Punkti</span>
+          <span class="stat__value" id="scoreValue">0</span>
+        </div>
+        <div class="stat stat--level">
+          <span class="stat__label">Līmenis</span>
+          <span class="stat__value" id="levelValue">1</span>
+        </div>
+        <div class="stat stat--lives">
+          <span class="stat__label">Dzīvības</span>
+          <span class="hearts" id="heartsContainer">
+            <span class="heart" data-idx="0">❤</span>
+            <span class="heart" data-idx="1">❤</span>
+            <span class="heart" data-idx="2">❤</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== MAIN LAYOUT ===== -->
+    <main class="stage">
+
+      <!-- LEFT: fake stream screen -->
+      <section class="stream">
+        <div class="stream__frame">
+          <canvas id="streamCanvas" class="stream__canvas"></canvas>
+
+          <div class="stream__hud stream__hud--top">
+            <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+            <span class="viewer-count" id="viewerCount">1.2K skatītāji</span>
+          </div>
+
+          <div class="stream__hud stream__hud--bottom">
+            <span class="streamer-name">xX_ProSlayer_Xx</span>
+            <span class="game-name">spēlē: Neona Arēna</span>
+          </div>
+
+          <div id="gameOverOverlay" class="overlay hidden">
+            <div class="overlay__card">
+              <h2>STREAMS PĀRTRAUKTS</h2>
+              <p>Boti pārņēma čatu. Tavs rezultāts:</p>
+              <div class="overlay__score" id="finalScore">0</div>
+              <button id="restartBtn" class="btn btn--primary">Restartēt spēli</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="instructions">
+          Klikšķini uz čata ziņas, lai to pārbaudītu. Atklāj botus ⚙, apstiprini cilvēkus 👤.
+          Kļūda vai palaists garām bots atņem sirdi un −50 punktus.
+        </p>
+      </section>
+
+      <!-- RIGHT: live chat -->
+      <section class="chat">
+        <div class="chat__header">
+          <span>Tiešraides čats</span>
+          <span class="chat__pulse"></span>
+        </div>
+        <div class="chat__messages" id="chatMessages"></div>
+      </section>
+
+    </main>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
